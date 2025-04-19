@@ -104,7 +104,7 @@ public class SwingEditorArea extends JPanel implements GenericCanvas {
 		// BH this allows us to dispose of the graphics after the 
 		// BH repaint operation.
 		return mDrawArea.getSwingDrawContext();
-		}
+	}
 
 	@Override
 	public double getCanvasWidth() {
