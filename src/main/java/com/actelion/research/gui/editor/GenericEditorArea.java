@@ -1282,6 +1282,11 @@ public class GenericEditorArea implements GenericEventListener {
 			} else if (e.getKey() == GenericKeyEvent.KEY_HELP || (mCurrentHiliteAtom == -1 && e.getKey() == '?')) {
 				showHelpDialog();
 				return;
+			} else if (e.getKey() == GenericKeyEvent.KEY_ENTER) {
+				if (mAtomKeyStrokeBuffer.length() != 0) {
+					expandAtomKeyStrokes(mAtomKeyStrokeBuffer.toString());
+					mAtomKeyStrokeBuffer.setLength(0);
+				}
 			} else if (mCurrentHiliteBond != -1) {
 				int ch = e.getKey();
 				if (ch == 'q' && mMol.isFragment()) {
@@ -1315,7 +1320,7 @@ public class GenericEditorArea implements GenericEventListener {
 				if (isFirst)
 					mFirstAtomKey = ch;
 				else {
-					if (ch != '\n' && mFirstAtomKey == 'l') { // if we don't want first 'l' to be a chlorine
+					if (mFirstAtomKey == 'l') { // if we don't want first 'l' to be a chlorine
 						mAtomKeyStrokeBuffer.setLength(0);
 						mAtomKeyStrokeBuffer.append('L');
 						}
